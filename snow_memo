@@ -1,0 +1,28 @@
+private <T extends ResponseBase, R>
+	observable.Transformer<R,R>
+	applyErrorHandler( ){
+		return observable -> observable.timeout()
+		.doOnError(throwable->{
+			throwable.printStackTrace();
+			System.err.println();
+		})
+		.doOnError(throwable->{
+			if(frozenRequest.isNotifyError()){
+				//common Error Handle
+				if(OnErrorAction != null){
+					OnErrorAction.call(throwable);
+				}
+			}
+		})
+		.retryWhen(errors -> {
+			return errors.zipWith(observable.range(1,4),Pair:new)
+			.flatMap(pair ->{
+				if(frozenRequest.isRetry()&&pair.getRight()<=3){
+					return observable.timer(1,TimeUnit.Seconds());
+				}
+				else{
+					//alternative
+				}
+			})
+		})
+	}
