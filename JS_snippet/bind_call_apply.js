@@ -1,8 +1,8 @@
 var a = {
-	pi: 3,
-	area :  function(r){
-		return this.pi*r*r;
-	}
+    pi: 3,
+    area :  function(r){
+        return this.pi*r*r;
+    }
 };
 
 var b = a.area.bind({pi:3.141});

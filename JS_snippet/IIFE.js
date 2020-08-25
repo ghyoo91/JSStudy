@@ -1,13 +1,13 @@
 var a = (function(){
-	var b = 9;
-	return {
-		getB : function(){
-			return b;
-		},
-		setB : function(value){
-			b = value;
-		}
-	};
+    var b = 9;
+    return {
+        getB : function(){
+            return b;
+        },
+        setB : function(value){
+            b = value;
+        }
+    };
 })();
 
 console.log(a.getB());
