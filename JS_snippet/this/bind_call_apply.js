@@ -1,6 +1,6 @@
 var a = {
     pi: 3,
-    area :  function(r){
+    area : function(r){
         return this.pi*r*r;
     }
 };
