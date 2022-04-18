@@ -1,11 +1,11 @@
 const {src, dest} = require("gulp");
 const SRC = {
-	JS: "src/js/*.js",
-	CSS: "src/css/*.css",
+	JS: "src/*.js",
+	CSS: "src/*.css",
 };
 const DEST = {
-	JS: "public/js",
-	CSS: "public/css",
+	JS: "public",
+	CSS: "public",
 };
 function cc() {
 	return src(SRC.JS)
