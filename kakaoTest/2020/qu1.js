@@ -35,7 +35,9 @@ function solution(new_id) {
     return answer;
 }
 
-//console.log(solution("...!@BaT#*..y.abcdefghijklm"));
+console.log(solution("...!@BaT#*..y.abcdefghijklm"));
 console.log(solution("z-+.^."));
-console.log(solution("......y......."));
+console.log(solution("=.="));
+console.log(solution("123_.def"));
 console.log(solution("abcdefghijklmn.p"));
+console.log(solution("......y......."));
