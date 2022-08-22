@@ -1,6 +1,8 @@
+import collections
 import time
+from typing import Deque
 
-def time_solution(string):
+def time_solution(string:str) -> None:
     start = time.time()
     print(solution(string))
     end = time.time()
@@ -20,5 +22,19 @@ def solution(string):
 
     return True
 
+def solution1(string:str) -> bool:
+    str: Deque = collections.deque()
+
+    for char in string:
+        if char.isalnum():
+            str.append(char.lower())
+
+    while len(str) > 1:
+        if str.popleft() != str.pop():
+            return False
+
+    return True
+
 time_solution("A man, a plan, a canal: Panama")
 time_solution("race a car")
+print(solution1("A man, a plan, a canal: Panama"))
