@@ -1,5 +1,6 @@
-export default function Breadcrumb({$app, initialState}) {
+export default function Breadcrumb({$app, initialState, onClick}) {
     this.state = initialState;
+    this.onClick = onClick;
 
     this.$target = document.createElement("nav");
     this.$target.className = "Breadcrumb";
@@ -12,29 +13,21 @@ export default function Breadcrumb({$app, initialState}) {
     };
 
     this.render = () => {
-        this.$target.innerHTML = `<div>root</div>${
+        this.$target.innerHTML = `<div class="nav-item">root</div>${
             this.state.map(
-                (node, idx) => `<div data-index="${idx}">${node.name}</div>`
+                (node, idx) => `<div class="nav-item" data-index="${idx}">${node.name}</div>`
             ).join("")
         }`;
     };
 
     this.$target.addEventListener("click", (e) => {
-        const $node = e.target.closest(""); // 여기서부터 시작할것
+        const $navItem = e.target.closest(".nav-item"); // 여기서부터 시작할것
 
-        if ($node) {
-            const {nodeId} = $node.dataset;
-            const selectedNode = this.state.nodes.find(node => node.id === nodeId);
+        if ($navItem) {
+            const {index} = $navItem.dataset;
 
-            if (!nodeId) {
-                this.onBackClick();
-            }
-
-            if (selectedNode) {
-                this.onClick(selectedNode);
-            }
+            this.onClick(index ? index * 1 : null);
         }
-
     });
 
     this.render();
