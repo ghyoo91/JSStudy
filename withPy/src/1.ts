@@ -28,3 +28,5 @@ function solution(string: string):boolean {
 
 time_solution("A man, a plan, a canal: Panama");
 time_solution("race a car");
+
+export default solution;
